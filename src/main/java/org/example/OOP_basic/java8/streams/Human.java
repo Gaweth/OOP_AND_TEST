@@ -17,7 +17,7 @@ public class Human implements Comparable<Human> {
         this.name = name;
         this.surname = surname;
         this.age = age;
-       this.gender = gender.getShortcutPl(genderShortcutPl);
+        this.gender = Gender.getByShortcutPl(genderShortcutPl);
     }
 
     public String getName() {
@@ -36,9 +36,8 @@ public class Human implements Comparable<Human> {
         return gender;
     }
 
-    public boolean isOVer20AndMan()
-    {
-        return  age > 20 && "M".equals(getGender().getShortcutPl());
+    public boolean isOver20AndGenderMan() {
+        return age > 20 && "M".equals(getGender().getShortcutPl());
     }
 
     @Override
@@ -50,24 +49,9 @@ public class Human implements Comparable<Human> {
                 ", gender=" + gender.getTranslationPl() +
                 '}';
     }
+
     @Override
     public int compareTo(Human o) {
         return surname.compareTo(o.getSurname());
-
     }
-
-    public static Gender getByShortcutPl ( String shortcutPl){
-        for ( Gender gender : Gender.values())
-        {
-            if ( shortcutPl.equals((getByShortcutPl())))
-            {
-                return gender;
-            }
-        }
-        return null;
-    }
-
-
-
-
 }
